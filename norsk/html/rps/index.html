@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<body>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .container {
+            margin: 0 auto;
+            background-color: skyblue;
+            border-radius: 20px;
+            padding: 25px 50px;
+            width: 80vw;
+        }
+
+        .action {
+            max-width: 800px;
+            padding: 40px 0;
+            margin: 0 auto;
+            background-color: cadetblue;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-evenly;
+            border-radius: 20px;
+        }
+
+        .options {
+            flex: 1 1 30%;
+            border-radius: 50%;
+            border-width: 4px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            animation-name: anim-fade;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+            width: 100%;
+            max-width: 120px;
+        }
+
+        .display-moves {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .move {
+            border-radius: 50%;
+            border-width: 4px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .separator {
+            font-size: 5em;
+        }
+    </style>
+    <div class="container">
+        <h1>Spillet Stein Papir Saks (Rock, Paper, Scissors)</h1>
+        <h2>Vinn 5 runder for å vinne!</h2>
+        <h2>
+            Spiller <span id="p-score">0</span> - <span id="c-score">0</span> Datamaskin
+        </h2>
+        <div class="display-moves">
+            <div class="move">
+                <img id="p-move" src="./eiendeler/Stein.svg">
+            </div>
+            <div class="separator">vs.</div>
+            <div class="move">
+                <img id="c-move" src="./eiendeler/Stein.svg">
+            </div>
+        </div>
+        <h2>Klikk på et bilde nedenfor for å velge ditt trekk:</h2>
+        <div class="action">
+            <input class="options" type="image" src="./eiendeler/Stein.svg" value="Stein" />
+            <input class="options" type="image" src="./eiendeler/Papir.svg" value="Papir" />
+            <input class="options" type="image" src="./eiendeler/Saks.svg" value="Saks" />
+        </div>
+    </div>
+    <script>
+        function randomrps() {
+            return Math.floor(Math.random() * 3)
+        }
+        const options = document.querySelectorAll(".options")
+        let pScore = 0
+        let cScore = 0
+
+        options.forEach(option => {
+            option.addEventListener("click", function () {
+                const pInput = this.value
+
+                const cOptions = ["Stein", "Papir", "Saks"]
+                const cInput = cOptions[randomrps()]
+
+                updateMoves(pInput, cInput)
+                compareInputs(pInput, cInput)
+                updateScore()
+                if (checkWinner()) {
+                    pScore = cScore = 0
+                    updateScore()
+                }
+            })
+        })
+
+        function updateMoves(pInput, cInput) {
+            document.getElementById("p-move").src = `./eiendeler/${pInput}.svg`
+            document.getElementById("c-move").src = `./eiendeler/${cInput}.svg`
+        }
+        function compareInputs(pInput, cInput) {
+            const currentMatch = `${pInput} vs ${cInput}`;
+            if (pInput === cInput) {
+                alert(`${currentMatch} er uavgjort`);
+                return;
+            }
+            if (pInput === "Stein") {
+                if (cInput === "Saks") {
+                    alert(`${currentMatch} = Du vinner!`);
+                    pScore++;
+                } else {
+                    alert(`${currentMatch} = Datamaskinen vinner`);
+                    cScore++;
+                }
+            }
+            //Check for Papir
+            else if (pInput === "Papir") {
+                if (cInput === "Stein") {
+                    alert(`${currentMatch} = Du vinner!`);
+                    pScore++;
+                } else {
+                    alert(`${currentMatch} = Datamaskinen vinner`);
+                    cScore++;
+                }
+            }
+            //Check for Saks
+            else {
+                if (cInput === "Papir") {
+                    alert(`${currentMatch} = Du vinner!`);
+                    pScore++;
+                } else {
+                    alert(`${currentMatch} = Datamaskinen vinner`);
+                    cScore++;
+                }
+            }
+        }
+        function updateScore() {
+            document.getElementById("p-score").textContent = pScore
+            document.getElementById("c-score").textContent = cScore
+        }
+        function checkWinner() {
+            if (pScore === 5 || cScore === 5) {
+                const vinneren = (pScore === 5) ? "Du vinner spillet! Gratulerer!" : "Datamaskinen vinner denne gangen. Prøv igjen neste gang!"
+                alert(vinneren)
+                return true
+            }
+            return false
+        }
+    </script>
+</body>
