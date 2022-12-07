@@ -8,7 +8,7 @@
 # what can you do?
  well, you can test stuff that i put here.
 ### for example:
- i have made a [`/testing`](https://github.com/bornlikeariver/randomcode/testing) directory for you to check for bugs with. of course, you aren't limited to that directory. you can check the main folders for bugs too, but the files that i have not personally checked for bugs, and you could help out by opening an issue, pointing it out. whether the issue be
+ i have made a [`/testing`](https://github.com/bornlikeariver/randomcode/tree/master/testing) directory for you to check for bugs with. of course, you aren't limited to that directory. you can check the main folders for bugs too, but the files that i have not personally checked for bugs, and you could help out by opening an issue, pointing it out. whether the issue be
  * something that makes it actually nonfunctional
  * something that makes it unnecessarily slow
  * or just something that makes it look less pretty than it could've looked.
