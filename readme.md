@@ -13,7 +13,7 @@
  * something that makes it unnecessarily slow
  * or just something that makes it look less pretty than it could've looked.
 
- if you do this, i will give you an option to put your username in a folder called "volunteered-tester" (you can choose your name, i will format it to be a link to your github page anyways)
+ if you do this, i will give you an option to put your username in a markdown file called "volunteered-testers.md" (you can choose your name, i will format it to be a link to your github page anyways)
 
 
 ## have fun. :D
