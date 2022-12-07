@@ -39,3 +39,4 @@ def checkMoves(pi, ci):
 checkMoves(pInput, cInput)
 
 # to do: make scores, 5 points to win
+# unfinished if you couldn't tell
