@@ -1,5 +1,5 @@
 # hi!
-### i didn't expect to be making a readme file but here we are.
+###### i didn't expect to be making a readme file but here we are.
 ### so welcome to the readme file, where i should tell you what this is, what you can do, etc., but am really lazy so it might not be that great.
 
 # now, what is this?
