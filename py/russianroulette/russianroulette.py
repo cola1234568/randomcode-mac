@@ -4,6 +4,14 @@ from time import sleep
 
 path = input("where do you want to risk?\nplease use forward slashes (/) and not backslashes (\\).\n> ")
 
+def fileSet():
+    pathlist = os.listdir(path)
+    if len(pathlist) == 0:
+        print("no files in the specified directory. exiting...")
+        exit()
+    file = random.choice(pathlist)
+    return file
+
 a = True
 while a:
     try:
@@ -13,7 +21,7 @@ while a:
         path = input(f"{path} doesn't exist.\nplease choose a valid path\n(make sure it is the whole path (including C:\ for windows))\n> ")
 
 print(pathlist)
-file = random.choice(pathlist)
+fileSet()
 
 shoot = input("press enter to shoot")
 if len(shoot) != 0:
@@ -27,7 +35,7 @@ else:
     b = True
 
 while b:
-    pathlist = os.listdir(path)
+    file = fileSet()
     if random.randint(0, 6) == 2:
         print(f"unlucky...deleting {file}")
         os.remove(f"{path}\{file}")
