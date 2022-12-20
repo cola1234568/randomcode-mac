@@ -1,4 +1,4 @@
-for i in range(100):
+for i in range(1, 101):
     new_str = ""
     if i % 3 == 0 or i % 5 == 0:
         if i % 3 == 0:
