@@ -5,8 +5,8 @@ from time import sleep
 path = input("where do you want to risk?\nplease use forward slashes (/) and not backslashes (\\).\n> ")
 
 
-def file_set():
-    _path_list = os.listdir(path)
+def file_set(_path):
+    _path_list = os.listdir(_path)
     if len(_path_list) == 0:
         print("no files in the specified directory. exiting...")
         exit()
@@ -24,7 +24,7 @@ while a:
                      f"(including C:\\ for windows))\n> ")
 
 print(path_list)  # noqa
-file_set()
+file_set(path)
 
 shoot = input("press enter to shoot")
 if len(shoot) != 0:
@@ -38,7 +38,7 @@ else:
     b = True
 
 while b:
-    file = file_set()
+    file = file_set(path)
     if random.randint(0, 6) == 2:
         print(f"unlucky...deleting {file}")
         os.remove(f"{path}\\{file}")
