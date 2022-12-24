@@ -20,8 +20,9 @@ while a:
         path_list = os.listdir(path)
         a = False
     except OSError:
-        path = input(f"{path} doesn't exist.\nplease choose a valid path\n(make sure it is the whole path "
-                     f"(including C:\\ for windows))\n> ")
+        path = input(f"{path} doesn't exist.\n"
+                     f"please choose a valid path\n"
+                     f"(make sure it is the whole path (including C:\\ for windows))\n> ")
 
 print(path_list)  # noqa
 file_set(path)
