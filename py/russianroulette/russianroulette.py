@@ -2,49 +2,42 @@ import os
 import random
 from time import sleep
 
-path = input("where do you want to risk?\nplease use forward slashes (/) and not backslashes (\\).\n> ")
-
+path = input("Where do you want to risk?\nPlease use forward slashes (/) and not backslashes (\).\n> ")
 
 def file_set(_path):
-    _path_list = os.listdir(_path)
+    try:
+        _path_list = os.listdir(_path)
+    except OSError:
+        print(f"{_path} doesn't exist.\nPlease choose a valid path")
+        exit()
     if len(_path_list) == 0:
-        print("no files in the specified directory. exiting...")
+        print("No files in the specified directory. Exiting...")
         exit()
     set_file = random.choice(_path_list)
     return set_file
 
-
-a = True
-while a:
-    try:
-        path_list = os.listdir(path)
-        a = False
-    except OSError:
-        path = input(f"{path} doesn't exist.\n"
-                     f"please choose a valid path\n"
-                     f"(make sure it is the whole path (including C:\\ for windows))\n> ")
-
-print(path_list)  # noqa
-file_set(path)
-
-shoot = input("press enter to shoot")
-if len(shoot) != 0:
-    b = False
-    print("then what was the point of opening this file???")
-    sleep(2)
-    print("i'm leaving")
-    sleep(2)
-    exit()
-else:
-    b = True
-
-while b:
-    file = file_set(path)
-    if random.randint(0, 6) == 2:
-        print(f"unlucky...deleting {file}")
-        os.remove(f"{path}\\{file}")
+while True:
+    path_list = os.listdir(path)
+    if len(path_list) == 0:
+        print("No files in the specified directory. Exiting...")
+        exit()
     else:
-        print("safe")
-    shoot = input("shoot again? (press enter to shoot)")
+        break
+
+file_to_delete = file_set(path)
+shoot = input(f"Press enter to shoot {file_to_delete}, or type any letter to quit\n> ")
+if len(shoot) != 0:
+    print("Exiting...")
+    exit()
+
+while True:
+    if random.randint(0, 6) == 2:
+        print(f"Unlucky...deleting {file_to_delete}")
+        os.remove(f"{path}/{file_to_delete}")
+    else:
+        print("Safe")
+    shoot = input("Shoot again? (press enter to shoot, or type any letter to quit)\n> ")
     if len(shoot) != 0:
-        b = False
+        print("Exiting...")
+        exit()
+    file_to_delete = file_set(path)
