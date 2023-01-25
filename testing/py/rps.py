@@ -17,7 +17,7 @@ def checkMoves(pi, ci):
     currentMatch = f"{pi} vs. {ci}"
     if pi == ci:
         print(f"{currentMatch} is a draw!")
-    
+
     if pi == "Rock":
         if ci == "Scissors":
             print(f"{currentMatch}, You win!")
