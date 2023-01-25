@@ -1,0 +1,34 @@
+/* HTML Code */
+
+/* This is incomplete! */
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>The Rock Paper Scissors Game</h1>
+            <h2>Win 5 rounds to win!</h2>
+            <h2>Player <span id="p-score">0</span> - <span id="c-score">0</span> Computer</h2>
+            <div class="display-moves">
+                <div class="move">
+                    <img id="p-move" src="assets/Rock.svg">
+                </div>
+                <div class="separator">vs.</div>
+                <div class="move">
+                    <img id="c-move" src="assets/Rock.svg">
+                </div>
+            </div>
+            <h2>Click on an image below to select your move:</h2>
+            <div class="action">
+                <input class="options" type="image" src="assets/Rock.svg" value="Rock" />
+                <input class="options" type="image" src="assets/Paper.svg" value="Paper" />
+                <input class="options" type="image" src="assets/Scissors.svg" value="Scissors" />
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
