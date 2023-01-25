@@ -1,0 +1,3 @@
+The argument required to execute countvowels.sh is the following:
+
+##count_vowels "example string"##
